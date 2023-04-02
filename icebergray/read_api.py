@@ -59,11 +59,11 @@ def _read_iceberg(
 ) -> Dataset:
     table_scan = table.scan(snapshot_id=snapshot_id, case_sensitive=case_sensitive)
     planned_files = [file_task.file.file_path for file_task in table_scan.plan_files()]
+    # TODO: the converted schema corrupts partitioned tables, maybe fixed in iceberg#6997
     table_schema = schema_to_pyarrow(table.schema())
 
     return read_parquet(
         paths=planned_files,
-        schema=table_schema,
         filesystem=filesystem,
         columns=columns,
         parallelism=parallelism,
