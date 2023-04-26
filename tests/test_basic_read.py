@@ -1,23 +1,8 @@
 from typing import Dict
 
 import pytest
-from pyiceberg.catalog import Catalog, load_catalog
 from icebergray import read_iceberg
 from pyarrow.fs import S3FileSystem
-
-
-@pytest.fixture()
-def catalog() -> Catalog:
-    return load_catalog(
-        "local",
-        **{
-            "type": "rest",
-            "uri": "http://localhost:8181",
-            "s3.endpoint": "http://localhost:9000",
-            "s3.access-key-id": "admin",
-            "s3.secret-access-key": "password",
-        },
-    )
 
 
 @pytest.fixture()
