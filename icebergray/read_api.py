@@ -1,18 +1,11 @@
 from typing import Optional, List, Dict, Any, Tuple
 
-from pyiceberg.table import Table
-from pyiceberg.catalog import load_catalog
-from pyiceberg.schema import Schema
-from pyiceberg.io.pyarrow import schema_to_pyarrow
-
 from pyarrow.fs import FileSystem
 
 import numpy as np
-from ray.data import read_parquet
-from ray.data.dataset import Dataset
-from ray.data.datasource import DefaultParquetMetadataProvider
 
-import pyarrow as pa
+from ray.data import read_parquet
+from ray.data.datasource import DefaultParquetMetadataProvider
 
 
 def read_iceberg(
@@ -21,7 +14,6 @@ def read_iceberg(
         catalog_name: Optional[str] = None,
         catalog_properties: Optional[Dict[str, str]] = None,
         snapshot_id: Optional[int] = None,
-        case_sensitive: bool = True,
         filesystem: Optional[FileSystem] = None,
         columns: Optional[List[str]] = None,
         parallelism: int = -1,
