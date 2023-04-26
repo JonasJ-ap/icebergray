@@ -1,10 +1,10 @@
 install:
-	rm -r venv
+	rm -rf venv
 	python -m venv venv
 	venv/bin/pip install -r requirements.txt
 
 install-apple-silicon:
-	rm -r venv
+	rm -rf venv
 	/usr/bin/python3 -m venv venv
 	venv/bin/pip install -r requirements.txt
 
