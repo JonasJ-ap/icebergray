@@ -1,9 +1,8 @@
 from icebergray import read_iceberg
-from pyiceberg.catalog import load_catalog
 
 DB_NAME = "iceberg_ref"
 
-TEST_TABLE_NAMES = ["iceberg_ref.nyc_taxis",
+TEST_TABLE_NAMES = [
                     "iceberg_ref.iceberg_all_types_parquet",
                     "iceberg_ref.iceberg_nested_parquet",
                     "iceberg_ref.iceberg_all_primitive_types_id_bool_partitioned_parquet",
@@ -12,10 +11,10 @@ TEST_TABLE_NAMES = ["iceberg_ref.nyc_taxis",
                     "iceberg_ref.iceberg_all_types_id_partitioned_parquet",
                     "iceberg_ref.iceberg_all_types_partitioned_parquet_v1",
                     "iceberg_ref.iceberg_nested_partitioned_parquet",
-                    "iceberg_ref.iceberg_nested_partitioned_parquet_v1"
+                    "iceberg_ref.iceberg_nested_partitioned_parquet_v1",
+                    "snapshot_to_iceberg_demo.migrated_iceberg_all_types_partitioned_same_location"
                     ]
 
-catalog = load_catalog("default")
 
 if __name__ == "__main__":
     for table_name in TEST_TABLE_NAMES:
